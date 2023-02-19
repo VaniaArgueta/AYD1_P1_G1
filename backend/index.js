@@ -10,7 +10,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/mostrarListado',function(req,res){
-    conn.query('SELECT * FROM contacto', 
+    conn.query('SELECT * FROM contacto;', 
+        function (err, results, fields) {
+            if (err) throw err;
+            else console.log('Selected ' + results.length + ' row(s).');
+
+            res.send(results)
+            console.log('Done.');
+        })
+});
+
+app.get('/mostrarListadoFavoritos',function(req,res){
+    conn.query('SELECT * FROM contacto WHERE favorito = 1;', 
         function (err, results, fields) {
             if (err) throw err;
             else console.log('Selected ' + results.length + ' row(s).');
