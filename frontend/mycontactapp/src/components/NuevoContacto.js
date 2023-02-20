@@ -12,8 +12,35 @@ export const NuevoContacto = () => {
 
     function onSubmit(e) {
         e.preventDefault();
+
+        var valido = true;
         
-          axios
+        if(nombre==="") {
+          alert('El nombre no debe estar vacío');
+          valido = false;
+          return;
+        }
+
+        const regexTelefono = /^[0-9]{8}$/;
+        if(telefono.match(regexTelefono)) {
+          console.log("teléfono válido");   
+        } else {
+          valido = false;
+          alert(telefono + "Teléfono con formato incorrecto");
+          return;
+        }
+
+        const regexCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if(correo.match(regexCorreo)) {
+          console.log("correo válido");   
+        } else {
+          valido = false;
+          alert("Correo con formato incorrecto");
+          return;
+        }
+        
+      if(valido){
+        axios
           .post(url, {
             nombre: nombre,
             apellido: apellido,
@@ -24,7 +51,8 @@ export const NuevoContacto = () => {
           .then((response) => {
             console.log(response.data);
             alert('Contacto agregado: '+  nombre + ' '+ apellido);
-          }); 
+          });
+      } 
 
           
       }
