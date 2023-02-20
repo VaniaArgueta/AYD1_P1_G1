@@ -7,7 +7,7 @@ export const ListaContactos = (props) => {
 
     // props.tipo = 0 -> listado de todos los contactos
     // props.tipo = 1 -> listado de favoritos
-    const url = props.tipo == 0 ? 'http://localhost:4000/mostrarListado': 'http://localhost:4000/mostrarListadoFavoritos'; 
+    const url = props.tipo === 0 ? 'http://localhost:4000/mostrarListado': 'http://localhost:4000/mostrarListadoFavoritos'; 
     
     const [datosAPI, setDatosAPI] = useState([]);
 
