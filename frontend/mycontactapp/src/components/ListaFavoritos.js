@@ -5,40 +5,38 @@ import { CardContacto } from './CardContacto';
 
 export const ListaFavoritos = (props) => {
 
-  // props.tipo = 0 -> listado de todos los contactos
-  // props.tipo = 1 -> listado de favoritos
-  const url = 'http://localhost:4000/mostrarListadoFavoritos';
+    // props.tipo = 0 -> listado de todos los contactos
+    // props.tipo = 1 -> listado de favoritos
+    const url = 'http://localhost:4000/mostrarListadoFavoritos'; 
+    
+    const [datosAPI, setDatosAPI] = useState([]);
 
-  const [datosAPI, setDatosAPI] = useState([]);
+    React.useEffect(() => {
+        axios.get(url).then((response) => {
+            setDatosAPI(response.data);            
+        });
+      }, []);
 
-  React.useEffect(() => {
-    axios.get(url).then((response) => {
-      setDatosAPI(response.data);
-    });
-  }, []);
-
-  return (
-    <>
-      <div className="rowS">
-        {
-          datosAPI.map((item, index) => {
-            return (
-              <div key={index} onClick={() => (console.log("aqui"))}>
-                <CardContacto
-                  tipo={1}
-                  nombre={item.nombre}
-                  apellido={item.apellido}
-                  telefono={item.telefono}
-                  correo={item.correo}
-                  idContacto={item.idContacto}
-                  item={item}
-                  key={index}
-                />
-              </div>
-            )
-          })
-        }
-      </div>
-    </>
-  );
+    return (
+        <>
+        <div className="row ">
+            {
+              datosAPI.map((item, index) => {
+                return(
+                  <CardContacto  
+                    tipo = {1}                   
+                    nombre={item.nombre} 
+                    apellido={item.apellido}                   
+                    telefono={item.telefono} 
+                    correo={item.correo}  
+                    idContacto={item.idContacto}               
+                    item={item}                 
+                    key={index}
+                  />
+                )
+              })
+            }
+          </div> 
+        </>
+    );
 }
