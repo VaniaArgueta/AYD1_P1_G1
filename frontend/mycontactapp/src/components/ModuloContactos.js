@@ -1,8 +1,10 @@
 import React from 'react';
 import { NuevoContacto } from './NuevoContacto';
 import { useState } from 'react';
+import { ListaContactosModificar } from './ListaContactosModificar';
 import { ListaContactos } from './ListaContactos';
 import { ListaFavoritos } from './ListaFavoritos';
+import { ModificarContacto } from './ModificarContacto';
 
 export const ModuloContactos = (props) => {
     // props.tipo = 0 -> listado de todos los contactos
@@ -15,7 +17,6 @@ export const ModuloContactos = (props) => {
             <NuevoContacto/>
        );
     }
-
     //const url = props.tipo == 0 ? 'http://localhost:4000/mostrarListado': 'http://localhost:4000/mostrarListadoFavoritos'; 
 
 
@@ -25,6 +26,8 @@ export const ModuloContactos = (props) => {
         return <ListaFavoritos tipo = {1}/>;
       }else if(props.tipo === 2){
         return formNuevoContacto();
+      }else if(props.tipo === 3){
+        return <ListaContactosModificar tipo = {0}/>;
     }else return <>else</>;
 
 }

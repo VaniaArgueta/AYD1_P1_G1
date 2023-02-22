@@ -17,13 +17,21 @@ export const ListaFavoritos = (props) => {
     });
   }, []);
 
+  function charge(item) {
+
+    console.log(item);
+    axios.get(url).then((response) => {
+      setDatosAPI(response.data);      
+    });
+  }
+
   return (
     <>
       <div className="rowS">
         {
           datosAPI.map((item, index) => {
             return (
-              <div key={index} onClick={() => (console.log("aqui"))}>
+              <div key={index} onClick={() => (charge(item))}>
                 <CardContacto
                   tipo={1}
                   nombre={item.nombre}
