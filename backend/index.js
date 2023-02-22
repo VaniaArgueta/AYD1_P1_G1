@@ -52,6 +52,19 @@ app.post('/agregarContacto',function(req,res){
 
 });
 
+app.post('/obtenerContacto',function(req,res){
+    console.log(req.body.idContacto)
+    let idContacto = req.body.idContacto;
+    conn.query('SELECT * FROM contacto WHERE idContacto = ?;', [idContacto], 
+        function (err, results, fields) {
+            if (err) throw err;
+            else console.log('Selected ' + results.length + ' row(s).');
+
+            res.send(results)
+            console.log('Done.');
+        })
+});
+
 app.post('/modificarContacto',function(req,res){
     let nombre = req.body.nombre;
     let apellido = req.body.apellido;
