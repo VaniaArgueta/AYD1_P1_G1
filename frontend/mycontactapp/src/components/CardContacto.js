@@ -22,14 +22,31 @@ export const CardContacto = (props) => {
             .then((response) => {
                 console.log(response.data);
                 alert('Contacto agregado a Favoritos: ' + props.nombre + ' ' + props.apellido);
+            });
+        navigate("/contacts");
+    }
 
+    function removeFavorite(id) {
+        console.log("id" + id);
+        axios
+            .post(url, {
+                nombre: props.nombre,
+                apellido: props.apellido,
+                telefono: props.telefono,
+                correo: props.correo,
+                favorito: 0,
+                idContacto: id
+            })
+            .then((response) => {
+                console.log(response.data);
+                alert('Contacto removido de Favoritos: ' + props.nombre + ' ' + props.apellido);
             });
         navigate("/contacts");
     }
 
     if (props.tipo === 0) {
         return (
-            <div style={{ width: "max-width: 400px", padding:"2px" }}>
+            <div style={{ width: "max-width: 400px", padding: "2px" }}>            
                 <div className="card" >
                     <div className="row">
                         <div className="col-2">
@@ -75,7 +92,7 @@ export const CardContacto = (props) => {
         );
     } else {
         return (
-            <div style={{ width: "max-width: 400px", padding:"2px" }}>
+            <div style={{ width: "max-width: 400px", padding: "2px" }}>
                 <div className="card" >
                     <div className="row">
                         <div className="col-2">
@@ -94,14 +111,12 @@ export const CardContacto = (props) => {
                             </div>
                         </div>
                         <div className="col-4">
-                            <button type="button" className="button-44 btn-outline-danger">
+                            <button type="button" className="button-44 btn-outline-danger" onClick={(e) => removeFavorite(props.idContacto)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                                 </svg> Quitar Favorito
                             </button>
-
                         </div>
-
                     </div>
                 </div>
             </div>
