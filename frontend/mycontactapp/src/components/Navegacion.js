@@ -8,7 +8,7 @@ export const Navegacion = () => {
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">
                 <div className='banner'>
-                    <h2 className='titulo'>MY CONTACT APP</h2>
+                    <h2 className='titulo'>MIS CONTACTOS APP</h2>
                 </div>
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,13 +17,13 @@ export const Navegacion = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                    <Link className="navbar-brand" to="/">Home</Link>
+                    <Link className="navbar-brand" to="/">Inicio</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="navbar-brand" to="/contacts">Contacts</Link>
+                    <Link className="navbar-brand" to="/contacts">Contactos</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="navbar-brand" to="/about">About</Link>
+                    <Link className="navbar-brand" to="/about">Acerca</Link>
                 </li>
 
             </ul>
