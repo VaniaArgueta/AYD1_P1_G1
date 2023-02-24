@@ -65,6 +65,19 @@ app.post('/obtenerContacto',function(req,res){
         })
 });
 
+app.post('/buscarContacto'),function(req,res){
+    let nombre = req.body.nombre;
+
+    conn.query('SELECT idContacto, nombre,apellido,telefono,correo,favorito Where nombre like ?',[nombre],
+    function(err,results,fields){
+        if(err) throw err;
+        else console.log('Selected '+results.length+' row(s).');
+
+        res.send(results)
+        console.log('Done.');
+    }
+    );
+}
 app.post('/modificarContacto',function(req,res){
     let nombre = req.body.nombre;
     let apellido = req.body.apellido;
