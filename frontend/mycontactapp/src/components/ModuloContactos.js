@@ -28,7 +28,7 @@ export const ModuloContactos = (props) => {
       }else if(props.tipo === 2){
         return formNuevoContacto();
       }else if(props.tipo === 3){
-        return <ListaContactosModificar tipo = {0}/>;
+        return <ListaContactosModificar tipo = {0}/>;
       } else if(props.tipo == 4){
        return <BuscarContacto/>;
       }else return <>else</>;
