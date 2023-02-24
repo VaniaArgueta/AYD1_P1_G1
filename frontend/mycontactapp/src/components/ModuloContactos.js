@@ -5,6 +5,7 @@ import { ListaContactosModificar } from './ListaContactosModificar';
 import { ListaContactos } from './ListaContactos';
 import { ListaFavoritos } from './ListaFavoritos';
 import { ModificarContacto } from './ModificarContacto';
+import { BuscarContacto } from './BuscarContacto';
 
 export const ModuloContactos = (props) => {
     // props.tipo = 0 -> listado de todos los contactos
@@ -28,6 +29,8 @@ export const ModuloContactos = (props) => {
         return formNuevoContacto();
       }else if(props.tipo === 3){
         return <ListaContactosModificar tipo = {0}/>;
-    }else return <>else</>;
+      } else if(props.tipo == 4){
+       return <BuscarContacto/>;
+      }else return <>else</>;
 
 }
