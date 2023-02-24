@@ -10,13 +10,7 @@ export const BuscarContacto = (props) => {
     const url = 'http://localhost:4000/buscarContacto';
     
     function charge(item) {
-
-      axios.post(url, {
-        Name: nombre  
-      })
-      .then((response) => {
-        setDatosAPI(response.data);
-      });
+      console.log("No se que hace esto aqui Atte: Byron")
     }
 
     const cambio = () => {

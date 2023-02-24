@@ -24,7 +24,7 @@ app.post('/buscarContacto',function(req,res){
     let nombres = req.body.Name;
     let nombre = "%" + nombres + "%"
     console.log(nombre)
-    conn.query('SELECT * FROM contacto WHERE nombre LIKE ?;',[nombre],
+    conn.query('SELECT * FROM contacto WHERE nombre LIKE ? OR apellido LIKE ?;',[nombre, nombre],
     function(err,results,fields){
         if(err) throw err;
         else console.log('Selected '+results.length+' row(s).');
