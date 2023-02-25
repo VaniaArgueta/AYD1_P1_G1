@@ -19,8 +19,7 @@ export const ModuloContactos = (props) => {
        );
     }
     //const url = props.tipo == 0 ? 'http://localhost:4000/mostrarListado': 'http://localhost:4000/mostrarListadoFavoritos'; 
-
-
+    
     if(props.tipo === 0){      
         return <ListaContactos tipo = {0}/>;
       }else if(props.tipo === 1){
