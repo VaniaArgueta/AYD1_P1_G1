@@ -2,6 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { CardContacto } from './CardContacto';
+import { MyDocument } from './ListaContactosPDF';
+import ReactPDF from '@react-pdf/renderer';
+import ReactDOM from 'react-dom/client';
+import { PDFViewer } from '@react-pdf/renderer';
 
 export const ListaContactos = (props) => {
 
@@ -28,9 +32,19 @@ export const ListaContactos = (props) => {
     });
   }
 
+  
+
+  const onClickBtnDescargaPDF = () => {    
+    const root = ReactDOM.createRoot(document.getElementById("pruebaPDF"));
+    root.render(
+      <PDFViewer style={{width:"100%", height:"90vh"}}>
+        <MyDocument />
+      </PDFViewer>);
+  }
+
   return (
     <>
-      <div className="rowS">
+      <div className="rowS">        
         {
           datosAPI.map((item, index) => {
             return (
@@ -51,6 +65,12 @@ export const ListaContactos = (props) => {
           })
         }
       </div>
+      <div>
+      <button type="button"
+                        className='button-78 btn-outline-primar btn-lg'
+                        onClick={onClickBtnDescargaPDF}>Ver PDF</button>
+      </div>
+      <div id="pruebaPDF"></div>
     </>
   );
 }
