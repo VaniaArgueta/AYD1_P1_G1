@@ -65,6 +65,11 @@ export const ListaContactos = (props) => {
           })
         }
       </div>
+      <div>
+      <button type="button"
+                        className='button-78 btn-outline-primar btn-lg'
+                        onClick={onClickBtnDescargaPDF}>Ver PDF</button>
+      </div>
       <div id="pruebaPDF"></div>
     </>
   );
