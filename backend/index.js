@@ -20,6 +20,20 @@ app.get('/mostrarListado',function(req,res){
         })
 });
 
+app.post('/buscarContacto',function(req,res){
+    let nombres = req.body.Name;
+    let nombre = "%" + nombres + "%"
+    console.log(nombre)
+    conn.query('SELECT * FROM contacto WHERE nombre LIKE ? OR apellido LIKE ?;',[nombre, nombre],
+    function(err,results,fields){
+        if(err) throw err;
+        else console.log('Selected '+results.length+' row(s).');
+
+        res.send(results)
+        console.log('Done.');
+    })
+});
+
 app.get('/mostrarListadoFavoritos',function(req,res){
     conn.query('SELECT * FROM contacto WHERE favorito = 1;', 
         function (err, results, fields) {

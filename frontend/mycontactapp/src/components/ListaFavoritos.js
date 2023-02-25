@@ -2,6 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { CardContacto } from './CardContacto';
+import { MyDocumentFAV } from './ListaContactosFavoritosPDF';
+import ReactPDF from '@react-pdf/renderer';
+import ReactDOM from 'react-dom/client';
+import { PDFViewer } from '@react-pdf/renderer';
 
 export const ListaFavoritos = (props) => {
 
@@ -25,6 +29,15 @@ export const ListaFavoritos = (props) => {
     });
   }
 
+  const onClickBtnDescargaPDF = () => {    
+    const root = ReactDOM.createRoot(document.getElementById("pruebaPDFFavoritos"));
+    root.render(
+      <PDFViewer style={{width:"100%", height:"90vh"}}>
+        <MyDocumentFAV />
+      </PDFViewer>);
+  }
+
+
   return (
     <>
       <div className="rowS">
@@ -47,6 +60,12 @@ export const ListaFavoritos = (props) => {
           })
         }
       </div>
+      <div>
+      <button type="button"
+                        className='button-78 btn-outline-primar btn-lg'
+                        onClick={onClickBtnDescargaPDF}>Ver PDF Contactos Favoritos</button>
+      </div>
+      <div id="pruebaPDFFavoritos"></div>
     </>
   );
 }
