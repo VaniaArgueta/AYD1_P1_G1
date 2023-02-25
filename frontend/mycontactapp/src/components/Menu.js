@@ -29,7 +29,10 @@ export const Menu = () => {
                         onClick={() => setTipo(3)}>Editar Contacto</button>
                     <button type="button"
                         className='button-78 btn-outline-primar btn-lg'
-                        onClick={() => setTipo(4)}>Buscar Contacto</button>                    
+                        onClick={() => setTipo(4)}>Buscar Contacto</button>
+                    <button type="button"
+                        className='button-78 btn-outline-primar btn-lg'
+                        onClick={() => setTipo(4)}>BOTÓN CALIFICACIÓN</button>                    
                 </div>
                 <div className="dos">
                     <ModuloContactos tipo={tipo} />
