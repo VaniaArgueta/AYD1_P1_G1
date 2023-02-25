@@ -60,6 +60,11 @@ export const ListaFavoritos = (props) => {
           })
         }
       </div>
+      <div>
+      <button type="button"
+                        className='button-78 btn-outline-primar btn-lg'
+                        onClick={onClickBtnDescargaPDF}>Ver PDF Contactos Favoritos</button>
+      </div>
       <div id="pruebaPDFFavoritos"></div>
     </>
   );
